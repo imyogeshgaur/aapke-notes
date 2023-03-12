@@ -7,9 +7,9 @@ import { toast, ToastContainer } from "react-toastify";
 const DeleteNotes = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteDescription, setNoteDescription] = useState("");
-  const [notePriority, setNotePriority] = useState("");
+  const [noteTitle, setNoteTitle] = useState<string>("");
+  const [noteDescription, setNoteDescription] = useState<string>("");
+  const [notePriority, setNotePriority] = useState<string>("");
 
   useEffect(() => {
     const token: any = localStorage.getItem("jwt");
@@ -26,6 +26,10 @@ const DeleteNotes = () => {
         .catch((err) => console.log(err));
     }
   }, []);
+
+  const backAStep = ()=>{
+    window.history.back();
+  }
 
   const updateNoteForUser = async () => {
     try {
@@ -187,20 +191,27 @@ const DeleteNotes = () => {
         </select>
         <div className="text-center">
           <button
-            className="text-white bg-yellow-500 mt-5 p-2"
-            style={{ width: "16rem", borderRadius: "5px" }}
+            className="text-white bg-yellow-500 mt-5 mr-3 p-2"
+            style={{ width: "8rem", borderRadius: "5px" }}
             onClick={updateNoteForUser}
           >
             Update Note
           </button>
-        </div>
-        <div className="text-center">
           <button
             className="text-white bg-red-500 mt-5 p-2"
-            style={{ width: "16rem", borderRadius: "5px" }}
+            style={{ width: "8rem", borderRadius: "5px" }}
             onClick={deleteNoteForUser}
           >
             Delete Note
+          </button>
+        </div>
+        <div className="text-center">
+        <button
+            className="text-white bg-green-500 mt-5 mr-3 p-2"
+            style={{ width: "16rem", borderRadius: "5px" }}
+            onClick={backAStep}
+          >
+            Back
           </button>
         </div>
       </div>

@@ -11,14 +11,17 @@ const AddNote = () => {
   const [noteDescription, setNoteDescription] = useState<string>("");
   const [notePriority, setNotePriority] = useState<string>("");
   const objToken: any = jwt_decode(token);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) {
-      const navigate = useNavigate();
       navigate("/");
     }
   }, [])
   
+  const backAStep = ()=>{
+    window.history.back();
+  }
 
   const addNoteOfUser = async () => {
     const res = await axios.post("http://localhost:3000/notes/createNote", {
@@ -55,7 +58,7 @@ const AddNote = () => {
       });
       if (a == 1) {
         setTimeout(() => {
-          window.location.reload();
+          navigate("/notes")
         }, 2000);
       }
     }
@@ -108,6 +111,15 @@ const AddNote = () => {
             onClick={addNoteOfUser}
           >
             Add Note
+          </button>
+        </div>
+        <div className="text-center">
+          <button
+            className="text-white bg-green-500 mt-5 p-2"
+            style={{ width: "16rem", borderRadius: "5px" }}
+            onClick={backAStep}
+          >
+            Back 
           </button>
         </div>
       </div>

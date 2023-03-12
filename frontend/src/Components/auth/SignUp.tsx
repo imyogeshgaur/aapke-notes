@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
-import NavBar from "../assets/NavBar";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const SignUp = () => {
@@ -61,7 +60,7 @@ const SignUp = () => {
         });
         if (a == 1) {
           setTimeout(() => {
-            navigate("/")
+            navigate("/");
           }, 2000);
         }
       }
@@ -85,7 +84,7 @@ const SignUp = () => {
   };
   return (
     <>
-      <NavBar />
+      <div className="flex-auto bg-red-400 p-4 text-center">Aapke Notes</div>
       <ToastContainer autoClose={1000} />
       <div className="text-center">
         <h1 className="mt-24 text-3xl mb-4">Register Here</h1>

@@ -1,6 +1,5 @@
-import { useState,useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import NavBar from "../assets/NavBar";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -8,8 +7,7 @@ const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
-  
-  //If Token is Already stored 
+
   useEffect(() => {
     const token:any = localStorage.getItem("jwt")
     if(token){
@@ -56,8 +54,8 @@ const SignIn = () => {
               window.location.reload();
             }, 2000);
           }
-        } else {
-          localStorage.setItem("jwt",data.token)
+        } else if (data.token) {
+          localStorage.setItem("jwt", data.token);
           navigate("/notes");
         }
       } catch (error) {
@@ -82,7 +80,7 @@ const SignIn = () => {
 
   return (
     <>
-      <NavBar />
+      <div className="flex-auto bg-red-400 p-4 text-center">Aapke Notes</div>
       <ToastContainer autoClose={1000} />
       <div className="text-center">
         <h1 className="mt-24 text-3xl mb-4">Login Here</h1>

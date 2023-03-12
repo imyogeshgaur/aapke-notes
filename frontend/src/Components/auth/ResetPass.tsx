@@ -1,14 +1,13 @@
 import { useState } from "react";
-import NavBar from "../assets/NavBar";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useParams,useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 const ResetPass = () => {
   const [password, setPassword] = useState<string>("");
   const [cPassword, setCPassword] = useState<string>("");
   const params = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const resetPasswordUser = async () => {
     if (!password || !cPassword) {
@@ -48,7 +47,7 @@ const ResetPass = () => {
             });
             if (a == 1) {
               setTimeout(() => {
-                navigate("/")
+                navigate("/");
               }, 2000);
             }
           } else {
@@ -103,7 +102,7 @@ const ResetPass = () => {
   };
   return (
     <>
-      <NavBar />
+      <div className="flex-auto bg-red-400 p-4 text-center">Aapke Notes</div>
       <ToastContainer autoClose={1000} />
       <div className="text-center">
         <h1 className="mt-24 text-3xl mb-4">Reset Password</h1>
