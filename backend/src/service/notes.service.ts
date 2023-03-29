@@ -1,5 +1,7 @@
 import Notes from "../model/notes.entity";
 import { v1 } from "uuid";
+import * as googleTTS from 'google-tts-api';
+import say from "say";
 
 class NotesService {
     private notes;
@@ -25,6 +27,14 @@ class NotesService {
         }
     }
 
+    async playNote(data:any){
+        try {
+            const {noteDescription,noteTitle,notePriority} = data
+            say.speak(`Hey User, this note is of ${notePriority} priority. The Title of note is, "${noteTitle}, and, it's as follows, ${noteDescription}`)
+        } catch (error) {
+            console.log("Note's Service Error : ", error)
+        }
+    }
     async getAllNotes(creatorId: string) {
         try {
             const allNotesByCreator = await this.notes.findAll({

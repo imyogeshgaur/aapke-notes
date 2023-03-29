@@ -1,11 +1,21 @@
 import { Request, Response, Router } from 'express'
 import NotesController from '../controller/notes.controller';
+import authorization from '../middleware/authorization.middleware';
 const notesRouter = Router();
 
 notesRouter.post("/createNote", async (req: Request, res: Response) => {
     try {
         const notesController = new NotesController(req, res)
         await notesController.createNotes();
+    } catch (error) {
+        console.log("Note's Global Error : ", error)
+    }
+})
+
+notesRouter.post("/playNote", async (req: Request, res: Response) => {
+    try {
+        const notesController = new NotesController(req, res)
+        await notesController.playNote();
     } catch (error) {
         console.log("Note's Global Error : ", error)
     }

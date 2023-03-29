@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router";
-import { BsPersonFill } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 import { MdAddBox } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -96,14 +96,14 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="me-auto ml-3">
-            <BsPersonFill size={27} onClick={signOutUser} />
-          </div>
-          <div className="me-auto ml-3">
             <MdDelete
               size={27}
               title="Delete all notes"
               onClick={deleteAllNotes}
             />
+          </div>
+          <div className="me-auto ml-3">
+            <FiLogOut size={25} onClick={signOutUser} />
           </div>
         </div>
       </>
@@ -114,7 +114,7 @@ const NavBar = () => {
         <div className="flex bg-red-400 p-4">
           <div className="mx-auto">Aapke Notes</div>
           <div className="me-auto ml-3">
-            <BsPersonFill size={27} onClick={signOutUser} />
+            <FiLogOut size={27} onClick={signOutUser} />
           </div>
         </div>
       </>
@@ -130,7 +130,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="me-auto ml-3">
-            <BsPersonFill size={27} onClick={signOutUser} />
+            <FiLogOut size={27} onClick={signOutUser} />
           </div>
         </div>
       </>

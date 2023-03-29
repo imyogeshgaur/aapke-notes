@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import NotesService from "../service/notes.service";
+import decodeUser from "../helpers/decodeUser.helper";
 
 class NotesController {
     private req: Request;
@@ -25,6 +26,14 @@ class NotesController {
         }
     }
 
+    async playNote() {
+        try {
+            const data = this.req.body;
+            await this.service.playNote(data);
+        } catch (error) {
+            console.log("Note's Controller Error : ", error)
+        }
+    }
     async getAllNotes() {
         try {
             const creatorId = this.req.params.id;
@@ -61,11 +70,11 @@ class NotesController {
     async deleteNote() {
         try {
             const noteId = this.req.params.id;
-            const deleteTheNote:any = await this.service.deleteNote(noteId);
-            if(deleteTheNote){
-                return this.res.status(200).send({message:"Note Deleted Successfully !!!", delete:deleteTheNote})
-            }else{
-                return this.res.status(200).send({message:"Note not Deleted !!!",delete:deleteTheNote})
+            const deleteTheNote: any = await this.service.deleteNote(noteId);
+            if (deleteTheNote) {
+                return this.res.status(200).send({ message: "Note Deleted Successfully !!!", delete: deleteTheNote })
+            } else {
+                return this.res.status(200).send({ message: "Note not Deleted !!!", delete: deleteTheNote })
             }
         } catch (error) {
             console.log("Note's Controller Error : ", error)
@@ -75,11 +84,11 @@ class NotesController {
     async deleteALlNotes() {
         try {
             const creatorId = this.req.params.id;
-            const deleteTheNote:any = await this.service.deleteALlNotes(creatorId);
-            if(deleteTheNote){
-                return this.res.status(200).send({message:"Notes Deleted Successfully !!!", delete:deleteTheNote})
-            }else{
-                return this.res.status(200).send({message:"Notes not Deleted !!!",delete:deleteTheNote})
+            const deleteTheNote: any = await this.service.deleteALlNotes(creatorId);
+            if (deleteTheNote) {
+                return this.res.status(200).send({ message: "Notes Deleted Successfully !!!", delete: deleteTheNote })
+            } else {
+                return this.res.status(200).send({ message: "Notes not Deleted !!!", delete: deleteTheNote })
             }
         } catch (error) {
             console.log("Note's Controller Error : ", error)

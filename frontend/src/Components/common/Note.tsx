@@ -10,6 +10,7 @@ const DeleteNotes = () => {
   const [noteTitle, setNoteTitle] = useState<string>("");
   const [noteDescription, setNoteDescription] = useState<string>("");
   const [notePriority, setNotePriority] = useState<string>("");
+  const token:any = localStorage.getItem("jwt");
 
   useEffect(() => {
     const token: any = localStorage.getItem("jwt");
@@ -27,18 +28,18 @@ const DeleteNotes = () => {
     }
   }, []);
 
-  const backAStep = ()=>{
+  const backAStep = () => {
     window.history.back();
-  }
+  };
 
   const updateNoteForUser = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/notes/updateNote/${params.id}`
-        ,{
+        `http://localhost:3000/notes/updateNote/${params.id}`,
+        {
           noteDescription,
           notePriority,
-          noteTitle
+          noteTitle,
         }
       );
       const data = await res.data;
@@ -125,7 +126,7 @@ const DeleteNotes = () => {
         });
         if (a == 1) {
           setTimeout(() => {
-            navigate("/notes")
+            navigate("/notes");
           }, 2000);
         }
       }
@@ -148,6 +149,34 @@ const DeleteNotes = () => {
     }
   };
 
+  const playTheNote = async () => {
+    if (!noteDescription) {
+      const a = toast.error("Note has no description !!!", {
+        position: toast.POSITION.TOP_CENTER,
+        closeOnClick: false,
+        closeButton: false,
+        style: {
+          color: "red",
+          backgroundColor: "rgb(255, 206, 206)",
+        },
+      });
+      if (a == 1) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
+    } else {
+      try {
+        await axios.post("http://localhost:3000/notes/playNote", {
+          noteDescription,
+          noteTitle,
+          notePriority,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
     <>
       <NavBar />
@@ -206,7 +235,16 @@ const DeleteNotes = () => {
           </button>
         </div>
         <div className="text-center">
-        <button
+          <button
+            className="text-white bg-blue-500 mt-5 mr-3 p-2"
+            style={{ width: "16rem", borderRadius: "5px" }}
+            onClick={playTheNote}
+          >
+            Play Note
+          </button>
+        </div>
+        <div className="text-center">
+          <button
             className="text-white bg-green-500 mt-5 mr-3 p-2"
             style={{ width: "16rem", borderRadius: "5px" }}
             onClick={backAStep}
