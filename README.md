@@ -25,13 +25,13 @@ Step 2 : Create a .env file in the backend folder (see folder structure) with fo
   FRONTEND_URL = http://localhost:5173
 ```
 
-Step 3 : Run the backend of the application by the follwing command
+Step 3 : Run the backend of the application by the following command
 ```
   cd backend 
   npm start or yarn start
 ```
 
-Step 4 : Run the frontend of the application by the follwing command
+Step 4 : Run the frontend of the application by the following command
 ```
   cd frontend 
   npm start or yarn start
