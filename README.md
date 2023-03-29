@@ -4,6 +4,10 @@ Aapke notes is a notes taking web application that is built on MERN(MySQL,Expres
 This application is built for those users who need to maintain notes of the tasks they need to done in a day, this application has a feature by virtue of which,
 you can classify your note based on priotity (High, Medium or low), so that it is easy for you to prioritise your tasks.
 
+## Special Feature
+
+I have used Text-To-Speech api for speaking up the notes for users who are not able to speak. 
+
 ## Folder Structure 
 <img src="https://github.com/imyogeshgaur/aapke-notes/blob/master/folder_structure.PNG">
 
