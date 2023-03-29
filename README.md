@@ -2,7 +2,7 @@
 
 Aapke notes is a notes taking web application that is built on MERN(MySQL,Express,Reactjs and Nodejs) stack with a wrapper of typescript on backend and frontend.
 This application is built for those users who need to maintain notes of the tasks they need to done in a day, this application has a feature by virtue of which,
-you can classify your note based on priotity (High, Medium or low), so that it is easy for you to prioritise your tasks.
+you can classify your note based on priority (High, Medium or low), so that it is easy for you to prioritize your tasks.
 
 ## Special Feature
 
