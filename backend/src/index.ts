@@ -1,11 +1,10 @@
 import express, { json, urlencoded } from 'express'
-import userRouter from './routes/user.routes';
 import { config } from 'dotenv'
 import { resolve } from 'path'
 config({ path: resolve("src/.env") })
 import connectDb from './database/db.config';
-import notesRouter from './routes/notes.routes';
 import cors from "cors"
+import Routers from './routes/Router'
 const app = express();
 
 
@@ -16,7 +15,7 @@ app.use(json())
 app.use(cors({
     origin:"http://localhost:5173"
 }))
-app.use("/users", userRouter)
-app.use("/notes", notesRouter)
+app.use("/users", Routers.userRouter)
+app.use("/notes", Routers.notesRouter)
 
 app.listen(3000);
