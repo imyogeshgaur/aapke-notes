@@ -18,7 +18,11 @@ const DeleteNotes = () => {
       navigate("/");
     } else {
       axios
-        .get(`http://localhost:3000/notes/note/${params.id}`)
+        .get(`http://localhost:3000/notes/note/${params.id}`,{
+          headers:{
+            Authorization:token
+          }
+        })
         .then((res) => {
           setNoteDescription(res.data.noteDescription);
           setNotePriority(res.data.notePriority);
@@ -40,6 +44,10 @@ const DeleteNotes = () => {
           noteDescription,
           notePriority,
           noteTitle,
+        },{
+          headers:{
+            Authorization:token
+          }
         }
       );
       const data = await res.data;
@@ -96,7 +104,11 @@ const DeleteNotes = () => {
   const deleteNoteForUser = async () => {
     try {
       const res = await axios.delete(
-        `http://localhost:3000/notes/deleteNote/${params.id}`
+        `http://localhost:3000/notes/deleteNote/${params.id}`,{
+          headers:{
+            Authorization:token
+          }
+        }
       );
       const data = await res.data;
       if (data.message === "Note Not Deleted !!!") {
@@ -171,6 +183,10 @@ const DeleteNotes = () => {
           noteDescription,
           noteTitle,
           notePriority,
+        },{
+          headers:{
+            Authorization:token
+          }
         });
       } catch (error) {
         console.log(error);

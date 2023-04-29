@@ -29,6 +29,10 @@ const AddNote = () => {
       notePriority,
       noteTitle,
       creatorId: objToken.userId,
+    },{
+      headers:{
+        Authorization:token
+      }
     });
     const data = await res.data;
     if (data.message === "Please Fill All Fields !!!") {

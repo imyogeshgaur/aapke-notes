@@ -16,7 +16,11 @@ const Home = () => {
       navigate("/");
     } else {
       axios
-        .get(`http://localhost:3000/notes/allNotes/${objToken.userId}`)
+        .get(`http://localhost:3000/notes/allNotes/${objToken.userId}`,{
+          headers:{
+            Authorization:token
+          }
+        })
         .then((res) => res.data)
         .then((data) => setData(data))
         .catch((err) => {});
